@@ -4,18 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>LIFF Starter</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Home</h1>
-    <p><img src="image/Spring-Green-Background-Vector-Illustration.jpg"></p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium quia, ad reprehenderit non culpa voluptatem accusantium iste iusto numquam consequatur ipsum expedita facere reiciendis debitis nam, molestiae, adipisci eum. Eveniet!</p>
-<h3>ปริมาณต่อ100 g</h3>
-<ul>
-    <li>คาร์โบไฮเดตรต 11 g</li>
-    <li>แคลอรี (Kcal) 98</li>
-    <li>ไขมันทั้งหมด 4.8 g</li>
-    <li>คอลเลสเตอรอล 2 mg</li>
-</ul>
+
+    <h1>LIFF Profile User</h1>
+    
+    <img id="pictureUrl">
+    <p id="userId"><b>userID:</b></p>
+    <p id="displayName"><b>displayName:</b></p>
+    <p id="statusMessage"><b>statusMessage:</b></p>
+    <p id="userEmail"><b>UserEmail:</b></p>
+
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <script>
+
+        async function getUserProfile(){
+            const profile = await liff.getProfile() // ดึงข้อมูล Profile ผู้ใช้
+            document.getElementById("pictureUrl").src = profile.pictureUrl
+            document.getElementById("userId").append(profile.userId)
+            document.getElementById("displayName").append(profile.displayName)
+            document.getElementById("statusMessage").append(profile.statusMessage)
+            document.getElementById("userEmail").append(liff.getDecodedIDToken().email)
+        }
+
+        async function main(){
+            await liff.init({ liffId: "1656588630-yVE1v7da" }) // intial liff id
+            // ตรวจสอบเงื่อนไขว่า login หรือยัง
+            if (liff.isLoggedIn()) {
+                getUserProfile() // ดึงข้อมูล profile
+            }
+        }
+
+        main()
+
+    </script>
+
 </body>
 </html>
