@@ -16,6 +16,7 @@
     <p id="displayName"><b>displayName:</b></p>
     <p id="statusMessage"><b>statusMessage:</b></p>
     <p id="userEmail"><b>UserEmail:</b></p>
+    <p id="type"><b>type:</b></p>
 
     <button id="btnMsg" onclick="sendMsg()">Send Message</button>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -30,6 +31,12 @@
             document.getElementById("statusMessage").append(profile.statusMessage)
             document.getElementById("userEmail").append(liff.getDecodedIDToken().email)
         }
+
+        //ฟังก์ชั่นช้อมูล Context
+        function getcontext(){
+            document.getElementById("type").append(liff.getcontext().type )
+        }
+
 //ฟังก์ชั่นส่งข้อความไปในห้องแชต
         async function sendMsg(){
             //เช็คว่าเปิด Liff ใน Line App หรือไม่
@@ -53,6 +60,7 @@
             // ตรวจสอบเงื่อนไขว่า login หรือยัง
             if (liff.isLoggedIn()) {
                 getUserProfile() // ดึงข้อมูล profile
+                getcontext()
             }
         }
 
