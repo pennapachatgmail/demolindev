@@ -17,8 +17,10 @@
     <p id="statusMessage"><b>statusMessage:</b></p>
     <p id="userEmail"><b>UserEmail:</b></p>
     <p id="type"><b>type:</b></p>
+    <p id="scanCode"><b>Code:</b></p>
 
     <button id="btnMsg" onclick="sendMsg()">Send Message</button>
+    <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
     <script>
@@ -67,7 +69,11 @@ async function sendMsg() {
             }
         }
 
-        
+        //สร้างฟังก์ชั่น scancode
+        acync function scanCode(){
+            const result = await liff.scanCodeV2()
+            document.getElementById("type").append(liff.getContext().type)
+        }
 
             async function main(){
             liff.ready.then(() => {
