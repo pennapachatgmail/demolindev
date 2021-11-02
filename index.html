@@ -40,13 +40,13 @@
 //ฟังก์ชั่นส่งข้อความไปในห้องแชต
         async function sendMsg(){
             //เช็คว่าเปิด Liff ใน Line App หรือไม่
-            if(liff.getContext().type !=="none"){
+            if(liff.getContext().type !=="utou"){
                 await Liff.sendMessages([
                     //ใส่สติกเกอร์
                     {
                         "type": "sticker",
-                        "stickerId": "1",
-                        "packageId": "1"
+                        "stickerId": "1989",
+                        "packageId": "446"
                     }
                 ])
                         aleart("Message Send")
