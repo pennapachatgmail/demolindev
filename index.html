@@ -40,7 +40,7 @@
 //ฟังก์ชั่นส่งข้อความไปในห้องแชต
         async function sendMsg(){
             //เช็คว่าเปิด Liff ใน Line App หรือไม่
-            if(liff.getcontext().type !=="none"){
+            if(liff.getContext().type !=="none"){
                 await Liff.sendMessages([
                     //ใส่สติกเกอร์
                     {
@@ -56,12 +56,17 @@
         
 
         async function main(){
-            await liff.init({ liffId: "1656588621-L3Vv9ZWp" }) // intial liff id
-            // ตรวจสอบเงื่อนไขว่า login หรือยัง
-            if (liff.isLoggedIn()) {
-                getUserProfile() // ดึงข้อมูล profile
-                getContext()
+            liff.ready.then()=>{
+                if(liff.isLoggedIn()){
+                    getUserProfile()
+                    getContext()
+
+                }else{
+                    liff.login()
+                }
             }
+            await liff.init({ liffId: "1656588621-L3Vv9ZWp" }) // intial liff id
+            
         }
 
         main()
