@@ -1,3 +1,6 @@
+body{
+  font-family: 'Prompt', sans-serif;
+}
 button {
     display: block;
     width: 100%;
