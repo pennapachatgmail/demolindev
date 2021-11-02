@@ -55,16 +55,16 @@
 
         
 
-        async function main(){
-            liff.ready.then()=>{
-                if(liff.isLoggedIn()){
-                    getUserProfile()
+            async function main(){
+            liff.ready.then(() => {
+                // ตรวจสอบเงื่อนไขว่า login หรือยัง
+                if (liff.isLoggedIn()) {
+                    getUserProfile() // ดึงข้อมูล profile
                     getContext()
-
                 }else{
                     liff.login()
                 }
-            }
+            })
             await liff.init({ liffId: "1656588621-L3Vv9ZWp" }) // intial liff id
             
         }
