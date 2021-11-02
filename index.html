@@ -69,10 +69,11 @@ async function sendMsg() {
             }
         }
 
-        //สร้างฟังก์ชั่น scancode
-        acync function scanCode(){
+    
+               // สร้างฟังก์ชัน ScanCode
+               async function scanCode(){
             const result = await liff.scanCodeV2()
-            document.getElementById("type").append(liff.getContext().type)
+            document.getElementById("scanCode").append(result.value)
         }
 
             async function main(){
