@@ -89,12 +89,19 @@ async function sendMsg() {
           // ฟังก์ชัน openWindow()
           function openWindow(){
             liff.openWindow({
-                url:result.value,
+                url: result.value,
                // external: true // เปิดไปที่เว็บภายนอก
-                external: false // เปิดใน line
+                external: true // เปิดใน line
             })
         }
-
+         // ฟังก์ชัน openWindow()
+          function openWindow(){
+            liff.openWindow({
+                url:"https://line.me",
+                external: true // เปิดไปที่เว็บภายนอก
+            })
+        }
+        
             async function main(){
             liff.ready.then(() => {
                 // ตรวจสอบเงื่อนไขว่า login หรือยัง
